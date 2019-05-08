@@ -10,7 +10,8 @@ app.use(express.static(__dirname + '/public'));
 //Настройка роутов
 app.get('/', (req, res) => {
     res.render('index', {
-        title: 'Homepage',
+        title: 'Главная',
+        titleId: 'Homepage'
     });
 });
 

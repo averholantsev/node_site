@@ -12,13 +12,116 @@ html
     link(rel='stylesheet', type='text/css', media='screen', href='/css/peppermint.suggested.css')
     script(src='http://code.jquery.com/jquery-latest.min.js', type='text/javascript')
     script(src='//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js')
-    script(src='js/menu.js')
-    script(src='js/slider.js')
-    script(src='js/peppermint.min.js')
+    script(src='/js/menu.js')
+    script(src='/js/slider.js')
+    script(src='/js/peppermint.min.js')
   body
     main
       block header
-        header.header
-          h1 #{title}
+        header.header-main
+          .container
+            .header-content
+              ul.header-content-main
+                li.logo-container
+                  a(href="#" class="logo")
+                li
+                  a.header-link(href="#")
+                    i.fas.fa-map-marker-alt.icon-location-svg
+                    | г. Пермь, ул. Пермская, 30-170
+                li
+                  a.header-link(href="mailto:atradeperm@yandex.ru")
+                    i.fas.fa-envelope.icon-mail-svg
+                    | atradeperm@yandex.ru
+                li
+                  a.header-link(href="tel:89824420068")
+                    i.fas.fa-mobile-alt.icon-telephone-svg
+                    | +7 (982) 442-00-68
+            #cssmenu
+              ul
+                li
+                  if (titleId === "Homepage")
+                    a.header-menu-active(href="#") Главная
+                  else
+                    a(href="#") Главная
+                li 
+                  a(href="#") Страницы
+                  ul
+                    li
+                      a(href="#") About
+                    li
+                      a(href="#") Careers
+                    li
+                      a(href="#") Pricing
+                      ul
+                        li
+                          a(href="#") About
+                        li
+                          a(href="#") Careers
+                        li
+                          a(href="#") Pricing
+                        li
+                          a(href="#") Clients
+                    li
+                      a(href="#") Clients
+                li
+                  a(href="#") Товары
+                  ul
+                    li
+                      a(href="#") About
+                    li
+                      a(href="#") Careers
+                    li
+                      a(href="#") Pricing
+                    li
+                      a(href="#") Clients
+                li
+                  a(href="#") Блог
+                  ul
+                    li
+                      a(href="#") About
+                    li
+                      a(href="#") Careers
+                    li
+                      a(href="#") Pricing
+                    li
+                      a(href="#") Clients
+                li
+                  a(href="#") Контакты
       block content
-      
+      block footer
+        footer
+          .footer-social
+            .container
+              .footer-about
+                h3 About us
+                p Roomswear is a furniture-producing company which items can be characterized as unique, non-conformist and authentic – never boring and always full of imagination and inspiration. Creating all kinds of furniture and a wide selection of decor elements and accessories.
+                p With the courage to innovate, Furnicom creates trends and unique furnishing collections being affordable and desirable for all people.
+              .footer-social
+                h3 Social
+                a.social(href="#")
+                  i.fab.fa-vk
+                a.social(href="#")
+                  i.fab.fa-instagram
+                a.social(href="#")
+                  i.fab.fa-facebook-f
+          .footer-block
+            .container
+              ul
+                li
+                  if (titleId === "Homepage")
+                    a.active-page(href="#") HOME
+                  else 
+                    a(href="#") HOME
+                li
+                  a(href="#") ABOUT
+                li
+                  a(href="#") SERVICES
+                li
+                  a(href="#") PROJECTS
+                li
+                  a(href="#") PRICES
+                li
+                  a(href="#") CONTACTS
+    a(href="javascript:", id="return-to-top")
+      i(class="fas fa-chevron-up")
+    script(src="/js/scroll.js")
