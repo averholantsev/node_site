@@ -1,0 +1,17 @@
+{
+  "name": "node_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js --exec"
+  },
+  "author": "ArtemVer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.19.0",
+    "pug": "^2.0.3"
+  }
+}
