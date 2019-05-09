@@ -208,7 +208,7 @@ block content
       var a = 0;
       $(window).scroll(function() {
         var oTop = $('#counter').offset().top - window.innerHeight;
-        if (a == 0 && $(window).scrollTop() > oTop) {
+        if (a == 0 && $(window).scrollTop() ) oTop) {
           $('.counter-value').each(function() {
             var $this = $(this),
               countTo = $this.attr('data-count');
@@ -260,3 +260,29 @@ block content
               console.log('Peppermint setup done. Slides found: ' + n);
             }
           });
+  article.news
+    .news-container.container
+      h1 News
+      .news-block.news-1
+        a.news-img(href="#")
+          img(src="/src/post1-570x270.jpg")
+        a.news-h(href="#") Top Furniture Trends in the Millennium New Directions for Furniture in the 21st Century
+        p Furniture trends are dictated by who is buying what and why they’re doing it. Trends should not be confused with fads, which are fickle. Trends are the undercurrents that drive the results.
+      .news-block.news-2
+        a.news-img(href="#")
+          img(src="/src/post2-570x270.jpg")
+        a.news-h(href="#") 10 DIY Room Dividers That Perfectly Nail It How to Maximize Space & Create Privacy
+        p Room dividers are like magicians: they make something out of nothing. They instantly turn one large room into two, make privacy blossom and even create the illusion of more space
+  article.instagram-block
+    a(href="#")
+      img(src="/src/galery1.jpg")
+    a(href="#")
+      img(src="/src/galery2.jpg")
+    a(href="#")
+      img(src="/src/galery3.jpg")
+    a(href="#")
+      img(src="/src/galery4.jpg")
+    a(href="#")
+      img(src="/src/galery5.jpg")
+    a(href="#")
+      img(src="/src/galery6.jpg")
