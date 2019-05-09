@@ -232,4 +232,31 @@ block content
           a = 1;
         }
       });
-  
+  article.feedbacks
+    .feedbacks-container.container
+      h1 Testimonials
+      blockquote.feedback
+        div#peppermint.peppermint.peppermint-inactive
+          figure
+            dl.feedback-1
+              dt Adam Smith
+              dd I ordered this great and perfectly-designed living room set last month. It is really durable, the material is high-class! Previously I’ve ordered some furniture from Roomswear and now I’m a regular customer! I’m really pleased with the furniture itself and company’s service.
+          figure
+            dl.feedback-2
+              dt Mag Jones
+              dd Roomswear is fantastic! I ordered a custom-made kitchen set and they’ve done everything in time and with no remarks from my side. I’m very pleased with the furniture – it fully suits me and my home. Roomswear delivered my furniture right to my place and assembled the set in a matter of hours.
+          figure
+            dl.feedback-3
+              dt David Richards
+              dd I love these guys! Here, at Roomswear, I found perfect furnishings for my new house! I moved from another state and didn’t know where to buy or order furniture. I was recommended to see Roomswear, and I had no doubts. Everything I’ve ordered was well-done and greatly designed.
+        script.
+          var slider = Peppermint(document.getElementById('peppermint'), {
+            dots: false,
+            slideshow: true,
+            speed: 500,
+            slideshowInterval: 5000,
+            stopSlideshowAfterInteraction: true,
+            onSetup: function(n) {
+              console.log('Peppermint setup done. Slides found: ' + n);
+            }
+          });
