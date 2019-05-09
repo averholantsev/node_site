@@ -1,7 +1,7 @@
 extends default
 
 block content
-  article
+  article.slider
     main.main-content
       section.slideshow
         .slideshow-inner
@@ -14,8 +14,8 @@ block content
                     p Slide description 1
                   a.btn(href="#")
                     span.btn-inner Learn More
-                .image-container
-              img.image(src="https://www.alixbdanthenay.fr/wp-content/uploads/2015/07/Indispensable-1.jpg", alt="")
+              .image-container
+                img.image(src="https://www.alixbdanthenay.fr/wp-content/uploads/2015/07/Indispensable-1.jpg", alt="")
             .slide
               .slide-content
                 .caption
@@ -47,7 +47,7 @@ block content
               .image-container
                 img.image(src="https://www.alixbdanthenay.fr/wp-content/uploads/2016/11/20mars17-sans-typo.jpg", alt="")
           .pagination
-            .item is-active
+            .item.is-active
               span.icon1
             .item
               span.icon2
@@ -91,5 +91,93 @@ block content
             i.fas.fa-tags.icon-about-us-svg
           .about-us-text
             h2 Reasonable Prices
-            p We produce furniture to fulfill needs of all people and offer it at affordable and fair prices
+            p We produce furniture to fulfill needs of all people and.offer it at affordable and fair prices
       .item-3
+  article.offer
+    .offer-container.container
+      h1 What We.offer
+      .offer-flexbox
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-1
+              h2.offer-h2 chairs
+              span.offer-from from
+              span.offer-price 109.99
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 chairs
+              span.offer-from from
+              span.offer-price 109.99
+              p.offer-p Defined by its soft, rounded form that hugs the body, our Modern Curved Chair experiments with tone and texture to make a statement in any room. Its two-toned design pairs smooth leather with richly-textured basket slub upholstery.
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-1.offer-card-back
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-2
+              h2.offer-h2 tables
+              span.offer-from from
+              span.offer-price 300.99
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 tables
+              span.offer-from from
+              span.offer-price 300.99
+              p.offer-p Our Glass-n-Wooden Coffee Table calls attention to sleek, modern lines and elegant form, placing a smooth, inset glass top on a geometric base made of intersecting pieces of brass-finished metal and lacquered wood.
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-2.offer-card-back
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-3
+              h2.offer-h2 sofas
+              span.offer-from from
+              span.offer-price 1560.58
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 sofas
+              span.offer-from from
+              span.offer-price 1560.58
+              p.offer-p When the gang's all home, there's no better place to be than our cozy, room-for-all Sofa Sectional. Its sheltering profile is plumped with two sizes of scatter back pillows, while its slim frame and flanged edges give it modern, streamlined style.
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-3.offer-card-back
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-4
+              h2.offer-h2 enlightenment
+              span.offer-from from
+              span.offer-price 169.00
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 enlightenment
+              span.offer-from from
+              span.offer-price 169.00
+              p.offer-p Stylish and elegant, chic and fancy glass lamps, chandeliers and wall sconce will add the note of luxury and style to your interior. Our best selections of enlightenment will please every person!
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-4.offer-card-back
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-5
+              h2.offer-h2 textile
+              span.offer-from from
+              span.offer-price 600.99
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 textile
+              span.offer-from from
+              span.offer-price 600.99
+              p.offer-p Enjoy our hand-made pillows and a wide selection of textile elements specially designed for your home. Our designers create both the most intricate and plain textile items that can decorate any room.
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-5.offer-card-back
+        .offer-card
+          .offer-card-inner
+            .offer-card-face.offer-card-face-front.offer-card-6
+              h2.offer-h2 decor
+              span.offer-from from
+              span.offer-price 19.99
+            .offer-card-face.offer-card-face-back
+              h2.offer-h2 decor
+              span.offer-from from
+              span.offer-price 19.99
+              p.offer-p Our decor items and accessories add an artfully abstract touch to side tables and shelves alike. Our designers create the objects that can perfectly complete any of your interiors.
+              a.offer-button(href="#") more
+              .offer-card-backcolor
+              .offer-card-6.offer-card-back
