@@ -181,3 +181,54 @@ block content
               a.offer-button(href="#") more
               .offer-card-backcolor
               .offer-card-6.offer-card-back
+  article.metrics
+    .metrics-container.container
+      ul#counter.metrics-flexbox 
+        li.metric-box
+          i.fas.fa-umbrella-beach
+          span.metric-sum.counter-value(data-count="9859") 150
+          br
+          span.metric-name Finished Projects
+        li.metric-box
+          i.fas.fa-pen-nib
+          span.metric-sum.counter-value(data-count="8732") 450
+          br
+          span.metric-name New Designs
+        li.metric-box
+          i.fas.fa-ice-cream
+          span.metric-sum.counter-value(data-count="1143") 50
+          br
+          span.metric-name Team Members
+        li.metric-box
+          i.fas.fa-star
+          span.metric-sum.counter-value(data-count="2197") 90
+          br
+          span.metric-name Happy Clients
+    script(type='text/javascript').
+      var a = 0;
+      $(window).scroll(function() {
+        var oTop = $('#counter').offset().top - window.innerHeight;
+        if (a == 0 && $(window).scrollTop() > oTop) {
+          $('.counter-value').each(function() {
+            var $this = $(this),
+              countTo = $this.attr('data-count');
+            $({
+              countNum: $this.text()
+            }).animate({
+                countNum: countTo
+              },
+              {
+                duration: 2000,
+                easing: 'swing',
+                step: function() {
+                  $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                  $this.text(this.countNum);
+                }
+
+              });
+          });
+          a = 1;
+        }
+      });
