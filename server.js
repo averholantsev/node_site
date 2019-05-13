@@ -11,13 +11,13 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'Главная',
-        titleId: 'Homepage'
+        titleId: 'homepage'
     });
 });
 app.get('/blog', (req, res) => {
     res.render('blog-list', {
         title: 'Блог',
-        titleId: 'Blog'
+        titleId: 'blog'
     });
 });
 

@@ -23,7 +23,7 @@ html
             .header-content
               ul.header-content-main
                 li.logo-container
-                  a(href="#" class="logo")
+                  a(href="/" class="logo")
                 li
                   a.header-link(href="#")
                     i.fas.fa-map-marker-alt.icon-location-svg
@@ -39,10 +39,7 @@ html
             #cssmenu
               ul
                 li
-                  if (titleId === "Homepage")
-                    a.header-menu-active(href="#") Главная
-                  else
-                    a(href="#") Главная
+                  a(class=(titleId === "homepage" ? "header-menu-active" : undefined), href="/") Главная
                 li 
                   a(href="#") Страницы
                   ul
@@ -75,7 +72,7 @@ html
                     li
                       a(href="#") Clients
                 li
-                  a(href="/blog") Блог
+                  a(class=(titleId === "blog" ? "header-menu-active" : undefined), href="/blog") Блог
                   ul
                     li
                       a(href="#") About
@@ -108,14 +105,11 @@ html
             .container
               ul
                 li
-                  if (titleId === "Homepage")
-                    a.active-page(href="#") HOME
-                  else 
-                    a(href="#") HOME
+                  a(class=(titleId === "homepage" ? "active-page" : undefined), href="/") HOME
                 li
                   a(href="#") ABOUT
                 li
-                  a(href="#") SERVICES
+                  a(class=(titleId === "blog" ? "active-page" : undefined), href="/blog") BLOG
                 li
                   a(href="#") PROJECTS
                 li
