@@ -14,6 +14,12 @@ app.get('/', (req, res) => {
         titleId: 'Homepage'
     });
 });
+app.get('/blog', (req, res) => {
+    res.render('blog-list', {
+        title: 'Блог',
+        titleId: 'Blog'
+    });
+});
 
 //Настраиваем слушатель
 app.listen(port, () => {
