@@ -1,6 +1,8 @@
 //Переменные стилей
+@c-black: #1E1D24;
 @c-dark: #877f6c;
 @c-light: #bdb29c;
+@c-mokko-light: #e6e3de;
 @c-text-dark: #ddcbad;
 @c-text-normal: #ffffff;
 @c-back-gray: #f0f0f0;
@@ -444,6 +446,9 @@ body {
   color: white;
   font-weight: 400;
   text-transform: uppercase;
+}
+#cssmenu > ul > li:nth-child(1) {
+  a {padding-left: 0;}
 }
 #cssmenu > ul > li:hover > a {
   color: @c-text-dark;
@@ -1605,4 +1610,51 @@ footer {
 }
 
 //Стили хлебных крошек
-.breadcrumbs
+.breadcrumbs {
+  background: @c-mokko-light;
+  width: 100%;
+  height: 100%;
+
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.breadcrumbs-container {
+  display: flex;
+
+  .b-left-block {
+    flex-grow: 1;
+  }
+  .b-right-block {
+    margin-left: auto;
+  }
+  span {
+    display: inline-block;
+    margin: 25px 0;
+    color: @c-light;
+    font-size: 15px;
+  }
+  span:not(:last-of-type) {
+    margin-right: 5px; 
+  }
+
+  .b-black {
+    color: @c-black;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .b-link {
+    text-decoration: none;
+    color: @c-light;
+  }
+  span:hover .b-link {
+    text-decoration: underline;
+  }
+  .b-line {
+    text-decoration: underline;
+  }
+}
+
+//Стили списка блога
