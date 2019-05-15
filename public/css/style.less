@@ -2,6 +2,7 @@
 @c-black: #1E1D24;
 @c-dark: #877f6c;
 @c-light: #bdb29c;
+@c-date-light: #f6f6f6;
 @c-mokko-light: #e6e3de;
 @c-text-dark: #ddcbad;
 @c-text-normal: #ffffff;
@@ -1658,3 +1659,47 @@ footer {
 }
 
 //Стили списка блога
+
+.note-share {
+  .share-date {
+    position: relative;
+    display: block;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background-color: @c-date-light;
+    text-decoration: none;
+    transition: all .25s;
+    
+    span {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      transition: all .25s;
+    }
+    span:first-child{
+      padding-top: 25%;
+    }
+    .share-day {
+      color:@c-light;
+      font-weight: 600;
+      font-size: 22px;
+      letter-spacing: 0.2px;
+    }
+    .share-month {
+      position: relative;
+      color:@c-black;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      top: -8px;
+    }
+  }
+  .share-date:hover {
+    background-color: @c-light;
+  }
+  .share-date:hover > span {
+    color: white;
+  }
+}
