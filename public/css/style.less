@@ -9,6 +9,7 @@
 @c-back-gray: #f0f0f0;
 @c-back-mokko: #c4c4be;
 @c-line: #cdcbd1;
+@c-smm: #d0d0d4;
 @logo: url('../src/logo.png');
 @font-family: 'PT Sans', sans-serif;
 @font-h1-size: 29px;
@@ -1659,12 +1660,30 @@ footer {
 }
 
 //Стили списка блога
+.blog-list-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 25px;
+  padding-top: 40px;
+}
+
+.blog-note {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid @c-line;
+  margin-bottom: 40px; 
+}
 
 .note-share {
+  display: flex;
+  flex-direction: column;
+  width: 78px;
+  margin-right: 20px;
+
   .share-date {
     position: relative;
     display: block;
-    width: 78px;
+    width: inherit;
     height: 78px;
     border-radius: 50%;
     background-color: @c-date-light;
@@ -1702,4 +1721,108 @@ footer {
   .share-date:hover > span {
     color: white;
   }
+
+  .share-smm-block {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+
+    .share-smm {
+      color: @c-smm;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all .25s;
+      text-align: center;
+      margin-top: 23px;
+    }
+    .share-smm:hover {
+      color: @c-light;
+    }
+  }
+}
+
+.note-info {
+  width: 100%;
+
+  .note-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h4 {
+    color: @c-light;
+    font-size: 16px;
+    margin: 20px 0 0 0;
+    
+    a {
+      color: @c-light;
+    }
+    .note-category {
+      color: @c-black;
+      transition: all 0.25s;
+    }
+    .note-category:hover {
+      color: @c-light;
+    }
+  }
+
+  .note-h {
+    display: block;
+    margin-top: 10px;
+    color: #8e8778;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .note-h:hover {
+    color: @c-light;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 20px 0 40px 0;
+  }
+}
+
+.sidebar-container {
+  border-bottom: 1px solid @c-line;
+
+  h3 {
+    margin-top: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.44;
+    letter-spacing: 0.02em;
+    text-align: inherit;
+    color: @c-black;
+  }
+}
+
+.search-input {
+  border: 1px solid @c-line;
+  padding: 15px;
+  background-color: #F6F6F6;
+  color: @c-light;
+  font-size: 16px;
+
+  &::placeholder {
+    color: @c-light;
+    font-size: 16px;
+  }
+
+  &:active {
+    border: 2px solid @c-line;
+  }
+}
+
+.search-sub {
+
 }
