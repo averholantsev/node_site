@@ -1793,6 +1793,7 @@ footer {
 
 .sidebar-container {
   border-bottom: 1px solid @c-line;
+  padding-bottom: 40px;
 
   h3 {
     margin-top: 0;
@@ -1806,23 +1807,39 @@ footer {
   }
 }
 
+.search-block {
+  display: flex;
+}
+
 .search-input {
+  flex-grow: 2;
   border: 1px solid @c-line;
+  border-right: none;
   padding: 15px;
   background-color: #F6F6F6;
   color: @c-light;
   font-size: 16px;
+  outline:none;
 
   &::placeholder {
     color: @c-light;
     font-size: 16px;
   }
-
-  &:active {
-    border: 2px solid @c-line;
-  }
 }
 
 .search-sub {
+  position: relative;
+  height: 50px;
+  padding: 15px;
+  background-color: @c-light;
+  border: 1px solid @c-line;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  transition: all 0.25s;
 
+  &:hover {
+    background-color: #DDCBAD;
+  }
 }
