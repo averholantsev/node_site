@@ -30,6 +30,7 @@ app.get('/blog', (req, res) => {
     });
 });
 app.get('/bloglist', blog_controller.blog_list);
+app.post('/bloglist', blog_controller.blog_create);
 
 //Настраиваем слушатель
 app.listen(port, () => {
