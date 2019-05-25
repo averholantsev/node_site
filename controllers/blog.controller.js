@@ -13,23 +13,13 @@ exports.blog_create = (req, res) => {
   let blog = new Blog({
       autor: req.body.autor,
       date: req.body.date,
-      img: [
-        {
-          path: req.body.path,
-          order: req.body.order,
-          main: req.body.main
-        }
-      ],
-      tag: [
-        {
-          name: req.body.name
-        }
-      ],
+      main_img_path: req.body.main_img_path,
+      tag_name: req.body.tag_name,
       title: req.body.title,
       description: req.body.description
   });
 
-  product.save((err) => {
+  blog.save((err) => {
       if (err) {
           return next (err);
       };

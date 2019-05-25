@@ -1,0 +1,37 @@
+extends default
+
+block content
+    article.container
+        h2 Добавление статьи
+        br
+        form(method="post", action="/blog-list-post")
+            label(for="autor") Автор
+            br
+            input#autor(type="text", name="autor")
+            br
+            br
+            label(for="date") Дата
+            br
+            input#date(type="date", name="date")
+            br
+            br
+            label(for="main_img_path") Путь до картинки
+            br
+            input#main_img_path(type="text", name="main_img_path")
+            br
+            br
+            label(for="tag_name") Тэги
+            br
+            input#tag_name(type="text", name="tag_name")
+            br
+            br
+            label(for="title") Название
+            br
+            input#title(type="text", name="title")
+            br
+            br
+            label(for="description") Описание
+            br
+            textarea#description(name="description", cols="30", rows="10")
+            br
+            input(type="submit", value="Отправить")

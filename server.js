@@ -5,6 +5,9 @@ const port = 3000;
 const blog_controller = require('./controllers/blog.controller');
 //Константы подключения к БД и схемам
 const mongoose = require('mongoose');
+//Подключаем body-parser
+const bodyParser = require("body-parser");
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 //Подключаем PUG шаблонизатор
 app.set('view engine', 'pug');
@@ -29,8 +32,14 @@ app.get('/blog', (req, res) => {
         titleId: 'blog'
     });
 });
-app.get('/bloglist', blog_controller.blog_list);
-app.post('/bloglist', blog_controller.blog_create);
+app.get('/blog-list', (req, res) => {
+    res.render('blog-list-ad', {
+        title: 'Блог',
+        titleId: 'blog'
+    });
+});
+app.get('/blog-list-get', blog_controller.blog_list);
+app.post('/blog-list-post', urlencodedParser, blog_controller.blog_create);
 
 //Настраиваем слушатель
 app.listen(port, () => {
