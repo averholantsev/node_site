@@ -26,12 +26,7 @@ app.get('/', (req, res) => {
         titleId: 'homepage'
     });
 });
-app.get('/blog', (req, res) => {
-    res.render('blog-list', {
-        title: 'Блог',
-        titleId: 'blog'
-    });
-});
+app.get('/blog', blog_controller.blog_list);
 app.get('/blog-list', (req, res) => {
     res.render('blog-list-ad', {
         title: 'Блог',

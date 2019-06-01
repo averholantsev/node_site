@@ -1,12 +1,17 @@
 const Blog = require('../models/blog.model');
 
 exports.blog_list = (req, res) => {
-  Blog.find({}, (err, blog) => {
-      if (err) {
-          return next (err);
-      };
-      res.send(blog);
-  });
+    Blog.find({}, (err, blogs) => {
+        if (err) {
+            return next (err);
+        };
+        res.render('blog-list', {
+            title: 'Блог',
+            titleId: 'blog',
+            monthsList: ['янв','фвр','мрт','апр','май','инь','иль','авг','снт','окт','нбр','дек'],
+            blogs
+        });
+    });
 };
 
 exports.blog_create = (req, res) => {
