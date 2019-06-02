@@ -1,7 +1,17 @@
 const Blog = require('../models/blog.model');
 
 exports.blog_list = (req, res) => {
-    Blog.find({}, (err, blogs) => {
+    var pageNo = parseInt(req.query.page);
+    var size = parseInt(req.query.size);
+    var query = {};
+    if(pageNo < 0 || pageNo === 0) {
+        response = {"error" : true,"message" : "invalid page number, should start with 1"};
+        return res.json(response);
+    }
+    query.skip = size * (pageNo - 1);
+    query.limit = size;
+
+    Blog.find({}, {}, query, (err, blogs) => {
         if (err) {
             return next (err);
         };
