@@ -39,10 +39,13 @@ block content
                             p #{blog.description}
                 .blog-navigation
                     a.nav.nav-active(href="/blog?page=1&size=10") 1
-                    a.nav(href="#") 23
-                    a.nav-next(href="#") next
+                    a.nav(href="#") 2
+                    a.nav-next(href="#")
                         i.fas.fa-chevron-left
-                    a.nav-next(href="#") next
+                        |previous
+                        
+                    a.nav-next(href="#") 
+                        |next
                         i.fas.fa-chevron-right
             .blog-sidebar
                 .sidebar-container
