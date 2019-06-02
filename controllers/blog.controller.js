@@ -11,15 +11,22 @@ exports.blog_list = (req, res) => {
     query.skip = size * (pageNo - 1);
     query.limit = size;
 
-    Blog.find({}, {}, query, (err, blogs) => {
-        if (err) {
-            return next (err);
+    Blog.countDocuments({}, (err, totalCount) => {
+        if(err) {
+            response = {"error" : true,"message" : "Error fetching data"}
         };
-        res.render('blog-list', {
-            title: 'Блог',
-            titleId: 'blog',
-            monthsList: ['янв','фвр','мрт','апр','май','инь','иль','авг','снт','окт','нбр','дек'],
-            blogs
+        Blog.find({}, {}, query, (err, blogs) => {
+            if (err) {
+                return next (err);
+            };
+            var totalPages = Math.ceil(totalCount / size);
+            res.render('blog-list', {
+                title: 'Блог',
+                titleId: 'blog',
+                monthsList: ['янв','фвр','мрт','апр','май','инь','иль','авг','снт','окт','нбр','дек'],
+                blogs,
+                totalPages
+            });
         });
     });
 };
