@@ -25,7 +25,9 @@ exports.blog_list = (req, res) => {
                 titleId: 'blog',
                 monthsList: ['янв','фвр','мрт','апр','май','инь','иль','авг','снт','окт','нбр','дек'],
                 blogs,
-                totalPages
+                totalPages,
+                pageNo,
+                size
             });
         });
     });
