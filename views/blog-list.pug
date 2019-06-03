@@ -18,7 +18,7 @@ block content
                     .blog-note
                         .note-share
                             a.share-date(href="#")
-                                span.share-day #{blog.date.getDay()}
+                                span.share-day #{blog.date.getDate()}
                                 span#share-month-id.share-month #{monthsList[blog.date.getMonth()]}
                             .share-smm-block
                                 a.share-smm(href="#")
@@ -36,7 +36,10 @@ block content
                                 |in 
                                 a.note-category(href="#") #{blog.tag_name}
                             a.note-h(href="#") #{blog.title}
-                            p #{blog.description}
+                            if (blog.description.length > 200)
+                                p #{blog.description.substr(0,200)+'...'}
+                            else
+                                p #{blog.description}
                 .blog-pagination
                     if (totalPages >= 1 && totalPages <= 3)
                         if (pageNo != 1)
