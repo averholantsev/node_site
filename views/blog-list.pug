@@ -43,10 +43,10 @@ block content
                                 a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
                                     i.fas.fa-chevron-left
                                     |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""))(href=`/blog?page=1&size=${size}`) 1
+                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
                         if (totalPages != 1)
                             - for (var i=2; i<=totalPages; i++) {
-                                a.nav(class=(pageNo === i ? "nav-active" : ""))(href=`/blog?page=${i}&size=${size}`) #{i}
+                                a.nav(class=(pageNo === i ? "nav-active" : ""), href=`/blog?page=${i}&size=${size}`) #{i}
                             - }
                             if (pageNo != totalPages)
                                 a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
@@ -58,9 +58,9 @@ block content
                                 a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
                                     i.fas.fa-chevron-left
                                     |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""))(href=`/blog?page=1&size=${size}`) 1
+                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
                         if (pageNo >=1 && pageNo <= 2)
-                            a.nav(class=(pageNo === 2 ? "nav-active" : ""))(href=`/blog?page=2&size=${size}`) 2
+                            a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
                             a.nav.nav-disabled ...
                         
                         //Логика для 3 страницы
@@ -72,8 +72,8 @@ block content
                         //Логика для последних двух страниц
                         if (pageNo >= totalPages-1 && pageNo <= totalPages)
                             a.nav.nav-disabled ...
-                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""))(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
-                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""))(href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
+                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
                         if (pageNo != totalPages)
                             a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
                                 |next
@@ -84,9 +84,9 @@ block content
                                 a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
                                     i.fas.fa-chevron-left
                                     |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""))(href=`/blog?page=1&size=${size}`) 1
+                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
                         if (pageNo >=1 && pageNo <= 2)
-                            a.nav(class=(pageNo === 2 ? "nav-active" : ""))(href=`/blog?page=2&size=${size}`) 2
+                            a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
                             a.nav.nav-disabled ...
                         
                         //Логика для 3 страницы
@@ -110,8 +110,8 @@ block content
                         //Логика для последних двух страниц
                         if (pageNo >= totalPages-1 && pageNo <= totalPages)
                             a.nav.nav-disabled ...
-                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""))(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
-                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""))(href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
+                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
                         if (pageNo != totalPages)
                             a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
                                 |next

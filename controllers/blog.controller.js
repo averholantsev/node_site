@@ -15,7 +15,7 @@ exports.blog_list = (req, res) => {
         if(err) {
             response = {"error" : true,"message" : "Error fetching data"}
         };
-        Blog.find({}, {}, query, (err, blogs) => {
+        Blog.find({}, {}, query).sort('-date').exec((err, blogs) => {
             if (err) {
                 return next (err);
             };
