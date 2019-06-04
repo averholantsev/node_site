@@ -148,6 +148,24 @@ body {
       padding-bottom: 30px;
     }      
   }
+  .blog-note {
+    flex-direction: column;
+
+    .note-share {
+      flex-direction: row;
+      margin-right: 0;
+      margin-bottom: 10px;
+      .share-date {
+        margin-right: 20px;
+      }
+      .share-smm-block {
+        flex-direction: row;
+        vertical-align: middle;
+
+        
+      }
+    }
+  }
 }
 
 @media (min-width: 600px) {
@@ -217,6 +235,14 @@ body {
         padding-bottom: 0;
       } 
     }
+
+    .blog-note {
+      flex-direction: row;
+
+      .note-share {
+        flex-direction: column;
+      }
+    }
 }
 
 @media (min-width: 900px) {
@@ -284,11 +310,16 @@ body {
     .footer-block ul {
       justify-content: flex-start;
     }
+
+    .blog-list-content {
+      grid-template-columns: 4fr 1fr;
+      grid-column-gap: 40px;
+    }
 }
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1200px;
+        max-width: 1240px;
         padding: 85px 20px;
     }
     body h1 {
@@ -312,6 +343,11 @@ body {
     .offer-card {
       grid-column-start: auto;
       grid-column-end: auto;
+    }
+
+    .blog-list-content {
+      grid-template-columns: 3fr 1fr;
+      grid-column-gap: 80px;
     }
 }
 
@@ -1662,28 +1698,29 @@ footer {
 //Стили списка блога
 .blog-list-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-column-gap: 80px;
   padding-top: 40px;
+  padding-bottom: 40px;
+
+  .blog-note-container {
+    padding-bottom: 20px; 
+  }
 }
 
 .blog-note {
   display: flex;
-  flex-direction: row;
   border-bottom: 1px solid @c-line;
   margin-bottom: 40px; 
 }
 
 .note-share {
   display: flex;
-  flex-direction: column;
-  width: 78px;
+  width: auto;
   margin-right: 20px;
 
   .share-date {
     position: relative;
     display: block;
-    width: inherit;
+    width: 78px;
     height: 78px;
     border-radius: 50%;
     background-color: @c-date-light;
@@ -1742,12 +1779,16 @@ footer {
 }
 
 .note-info {
-  width: 100%;
+  width: auto;
 
   .note-image {
     display: block;
-    width: 100%;
+    width: auto;
     height: auto;
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 
   a {
@@ -1813,6 +1854,8 @@ footer {
 
 .search-input {
   flex-grow: 2;
+  min-width: 150px;
+  width: 100%;
   border: 1px solid @c-line;
   border-right: none;
   padding: 15px;
@@ -1824,6 +1867,7 @@ footer {
   &::placeholder {
     color: @c-light;
     font-size: 16px;
+    text-overflow: clip;
   }
 }
 
