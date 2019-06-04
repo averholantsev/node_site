@@ -33,7 +33,6 @@ app.get('/blog-list-ad', (req, res) => {
         titleId: 'blog'
     });
 });
-app.get('/blog-list-get', blog_controller.blog_list);
 app.post('/blog-list-post', urlencodedParser, blog_controller.blog_create);
 
 //Настраиваем слушатель
