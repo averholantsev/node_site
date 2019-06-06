@@ -48,7 +48,7 @@ exports.blog_record = (req, res) => {
     });
 };
 
-exports.blog_create = (req, res) => {
+exports.blog_create = (req, res, next) => {
   let blog = new Blog({
       autor: req.body.autor,
       date: req.body.date,
