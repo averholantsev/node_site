@@ -8,6 +8,9 @@ const mongoose = require('mongoose');
 //Подключаем body-parser
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
+//Подкючаем загрузщик файлов
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
 
 //Подключаем PUG шаблонизатор
 app.set('view engine', 'pug');

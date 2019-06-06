@@ -57,11 +57,12 @@ exports.blog_create = (req, res, next) => {
       title: req.body.title,
       description: req.body.description
   });
+  console.log(req.files.fileup.name)
 
-  blog.save((err) => {
+/*   blog.save((err) => {
       if (err) {
           return next (err);
       };
       res.send('Blog created successfully');
-  });
+  }); */
 };

@@ -4,7 +4,7 @@ block content
     article.container
         h2 Добавление статьи
         br
-        form(method="post", action="/blog-list-post")
+        form(method="post", action="/blog-list-post", encType="multipart/form-data")
             label(for="autor") Автор
             br
             input#autor(type="text", name="autor")
@@ -33,5 +33,11 @@ block content
             label(for="description") Описание
             br
             textarea#description(name="description", cols="30", rows="10")
+            br
+            br
+            label(for="fileup") Прикрепить изображение
+            br
+            input(name="fileup", type="file")
+            br
             br
             input(type="submit", value="Отправить")

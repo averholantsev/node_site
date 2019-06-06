@@ -10,7 +10,9 @@
   "author": "ArtemVer",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
+    "express-fileupload": "^1.1.4",
     "less": "^3.9.0",
     "mongoose": "^5.5.9",
     "nodemon": "^1.19.0",
