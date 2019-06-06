@@ -15,9 +15,9 @@ block content
             input#date(type="date", name="date")
             br
             br
-            label(for="main_img_path") Путь до картинки
+            label(for="fileup") Прикрепить изображение
             br
-            input#main_img_path(type="text", name="main_img_path")
+            input(name="fileup", type="file")
             br
             br
             label(for="tag_name") Тэги
@@ -33,11 +33,5 @@ block content
             label(for="description") Описание
             br
             textarea#description(name="description", cols="30", rows="10")
-            br
-            br
-            label(for="fileup") Прикрепить изображение
-            br
-            input(name="fileup", type="file")
-            br
             br
             input(type="submit", value="Отправить")
