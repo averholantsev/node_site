@@ -33,6 +33,21 @@ exports.blog_list = (req, res) => {
     });
 };
 
+exports.blog_record = (req, res) => {
+    var id = req.query.id;
+    Blog.findById(id).exec((err, record) => {
+        if (err) {
+            return next (err);
+        };
+        res.render('blog-record', {
+            title: record.title + ' | Блог',
+            titleId: 'record',
+            monthsList: ['янв','фвр','мрт','апр','май','инь','иль','авг','снт','окт','нбр','дек'],
+            record
+        });
+    });
+};
+
 exports.blog_create = (req, res) => {
   let blog = new Blog({
       autor: req.body.autor,

@@ -1,0 +1,46 @@
+extends default
+
+block content
+    article.breadcrumbs
+        .breadcrumbs-container.container
+            .b-right-block
+                span You Are Here:
+                span 
+                    a.b-link(href="/") HOME
+                span  /
+                span 
+                    a.b-link(href="/blog?page=1&size=10") BLOG
+                span  / 
+                span.b-line #{record.title}
+    article.blog-list
+        .blog-list-content.container
+            .blog-note-container
+                .blog-note
+                    .note-share
+                        a.share-date(href="#")
+                            span.share-day #{record.date.getDate()}
+                            span#share-month-id.share-month #{monthsList[record.date.getMonth()]}
+                        .share-smm-block
+                            a.share-smm(href="#")
+                                i.fab.fa-vk
+                            a.share-smm(href="#")
+                                i.fab.fa-facebook-f
+                            a.share-smm(href="#")
+                                i.fab.fa-twitter
+                    .note-info
+                        h2 #{record.title}
+                        h4
+                            |By 
+                            a(href="#") #{record.autor} 
+                            |in 
+                            a.note-category(href="#") #{record.tag_name}
+                        br
+                        a.note-image
+                            img(src=`${record.main_img_path}`)
+                        p #{record.description}
+            .blog-sidebar
+                .sidebar-container
+                    h3 SEARCH
+                    .search-block
+                        input.search-input(type="search", name="search", id="search", placeholder="Enter keyword...", autocomplete="off")
+                        button.search-sub(type="submit") search

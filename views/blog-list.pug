@@ -28,14 +28,14 @@ block content
                                 a.share-smm(href="#")
                                     i.fab.fa-twitter
                         .note-info
-                            a.note-image(href="#")
-                                img(src=`${blog.main_img_path}`, alt="")
+                            a.note-image(href=`/blog/record?id=${blog._id}`)
+                                img(src=`${blog.main_img_path}`)
                             h4
                                 |By 
                                 a(href="#") #{blog.autor} 
                                 |in 
                                 a.note-category(href="#") #{blog.tag_name}
-                            a.note-h(href="#") #{blog.title}
+                            a.note-h(href=`/blog/record?id=${blog._id}`) #{blog.title}
                             if (blog.description.length > 200)
                                 p #{blog.description.substr(0,200)+'...'}
                             else
