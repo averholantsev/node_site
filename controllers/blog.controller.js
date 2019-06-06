@@ -72,3 +72,10 @@ exports.blog_create = (req, res, next) => {
         res.send('Blog created successfully');
     });
 };
+
+exports.blog_insert = (req, res) => {
+    res.render('blog-list-add', {
+        title: 'Блог',
+        titleId: 'blog_insert'
+    });
+}

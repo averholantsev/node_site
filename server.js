@@ -22,21 +22,17 @@ mongoose.connect(dev_db, { useNewUrlParser: true });
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-//Настройка роутов
+//Роут: Главная страница
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'Главная',
         titleId: 'homepage'
     });
 });
+//Роут: Страницы блога
 app.get('/blog', blog_controller.blog_list);
 app.get('/blog/record', blog_controller.blog_record);
-app.get('/blog-list-ad', (req, res) => {
-    res.render('blog-list-ad', {
-        title: 'Блог',
-        titleId: 'blog'
-    });
-});
+app.get('/blog-list-add', blog_controller.blog_insert);
 app.post('/blog-list-post', urlencodedParser, blog_controller.blog_create);
 
 //Настраиваем слушатель
