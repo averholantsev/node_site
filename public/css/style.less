@@ -1877,6 +1877,16 @@ footer {
     font-size: 16px;
     text-overflow: clip;
   }
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+  &::-webkit-search-cancel-button:after {
+    content: 'X';
+    display: block;
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+  }
 }
 
 .search-sub {
