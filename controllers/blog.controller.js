@@ -55,17 +55,22 @@ exports.blog_create = (req, res, next) => {
     sampleFile.mv(`./public/src/${sampleFile.name}`, (err) => {
         if (err)
             return res.status(500).send(err);
-    })
-    let blog = new Blog({
+    });
+    var blog = new Blog({
         autor: req.body.autor,
         date: req.body.date,
         main_img_path: `/src/${sampleFile.name}`,
-        tag_name: req.body.tag_name,
+        tag_array: [],
         title: req.body.title,
         description: req.body.description
     });
-  
-    blog.save((err) => {
+    var array_tags = req.body.tag_name.split(' ');
+    
+    for (var i=0; i<array_tags.length; i++){
+        blog.tag_array.push({tag_name: array_tags[i]});
+    }
+
+     blog.save((err) => {
         if (err) {
             return next (err);
         };

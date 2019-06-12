@@ -34,7 +34,9 @@ block content
                                 |By 
                                 a(href="#") #{blog.autor} 
                                 |in 
-                                a.note-category(href="#") #{blog.tag_name}
+                                each tag in blog.tag_array
+                                    a.note-category(href="#") #{tag.tag_name}
+                                    |, 
                             a.note-h(href=`/blog/record?id=${blog._id}`) #{blog.title}
                             if (blog.description.length > 200)
                                 p #{blog.description.substr(0,200)+'...'}

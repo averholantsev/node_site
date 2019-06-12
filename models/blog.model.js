@@ -5,7 +5,9 @@ let blogSchema = new Schema ({
   autor: {type: String, required: true},
   date: {type: Date, required: true},
   main_img_path: {type: String, required: true},
-  tag_name: {type: String, required: true},
+  tag_array: [
+    {tag_name: String}
+  ],
   title: {type: String, required: true},
   description: {type: String, required: true}
 });
