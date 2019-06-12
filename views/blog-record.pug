@@ -33,9 +33,14 @@ block content
                             |By 
                             a(href="#") #{record.autor} 
                             |in 
+                            - var j = 0;
                             each tag in record.tag_array
                                 a.note-category(href="#") #{tag.tag_name}
-                                |, 
+                                if j < record.tag_array.length-1
+                                    |, 
+                                else
+                                    |
+                                - j++
                         br
                         a.note-image
                             img(src=`${record.main_img_path}`)
