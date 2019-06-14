@@ -15,9 +15,9 @@ block content
             input#date(type="date", name="date")
             br
             br
-            label(for="fileup") Прикрепить изображение
+            label(for="fileup") Прикрепить изображение для превью
             br
-            input(name="fileup", type="file")
+            input( type="file", name="fileup")
             br
             br
             label(for="tag_name") Тэги
@@ -32,6 +32,12 @@ block content
             br
             label(for="description") Описание
             br
-            textarea#description(name="description", cols="30", rows="10")
+            textarea#description(name="description", cols="100", rows="20")
             br
+            br
+            //label(for="files_p") Прикрепить изображения для статьи
+            //br
+            //input#files_p(type="file", name="files_p", multiple="multiple")
+            //br
+            //br
             input(type="submit", value="Отправить")
