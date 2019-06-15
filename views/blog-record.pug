@@ -14,6 +14,15 @@ block content
                 span.b-line #{record.title}
     article.blog-list
         .blog-list-content.container
+            - var hashtags = function(arraylist) {
+            -   var hashtags_list = "&hashtags=";
+            -   for (var j=0; j<arraylist.length; j++) {
+            -       if (typeof arraylist[j].tag_name != "undefined") hashtags_list += arraylist[j].tag_name;
+            -       if (j < arraylist.length-1) hashtags_list += ",";
+            -   }
+            -   if (hashtags_list != "&hashtags=") return hashtags_list;
+            -   else return ""
+            - }
             .blog-note-container
                 .blog-note
                     .note-share
@@ -21,11 +30,11 @@ block content
                             span.share-day #{record.date.getDate()}
                             span#share-month-id.share-month #{monthsList[record.date.getMonth()]}
                         .share-smm-block
-                            a.share-smm(href="#")
+                            a.share-smm(href=`https://vk.com/share.php?url=localhost:3000/blog/record?id=${record._id}`, target="_blank")
                                 i.fab.fa-vk
-                            a.share-smm(href="#")
+                            a.share-smm(href=`https://www.facebook.com/sharer/sharer.php?u=localhost:3000/blog/record?id=${record._id}`, target="_blank")
                                 i.fab.fa-facebook-f
-                            a.share-smm(href="#")
+                            a.share-smm(href=`http://twitter.com/share?text=${record.title}&url=localhost:3000/blog/record?id=${record._id}${hashtags(record.tag_array)}`, target="_blank")
                                 i.fab.fa-twitter
                     .note-info
                         h2 #{record.title}
@@ -49,5 +58,5 @@ block content
                 .sidebar-container
                     h3 SEARCH
                     .search-block
-                        input.search-input(type="search", name="search", id="search", placeholder="Enter keyword...", autocomplete="off")
-                        button.search-sub(type="submit") search
+                        input.input-all(type="search", name="search", id="search", placeholder="Enter keyword...", autocomplete="off")
+                        button.btn-all(type="submit") search

@@ -25,7 +25,7 @@ html
                 li.logo-container
                   a(href="/" class="logo")
                 li
-                  a.header-link(href="#")
+                  a.header-link
                     i.fas.fa-map-marker-alt.icon-location-svg
                     | г. Пермь, ул. Пермская, 30-170
                 li
@@ -74,7 +74,7 @@ html
                 li
                   a(class=(titleId === "blog" ? "header-menu-active" : undefined), href="/blog?page=1&size=10") Блог
                 li
-                  a(href="#") Контакты
+                  a(class=(titleId === "contacts" ? "header-menu-active" : undefined), href="/contacts") Контакты
       block content
       block footer
         footer
@@ -106,7 +106,7 @@ html
                 li
                   a(href="#") PRICES
                 li
-                  a(href="#") CONTACTS
+                  a(class=(titleId === "contacts" ? "active-page" : undefined), href="/contacts") CONTACTS
     a(href="javascript:", id="return-to-top")
       i(class="fas fa-chevron-up")
     script(src="/js/scroll.js")

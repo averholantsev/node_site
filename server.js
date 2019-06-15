@@ -35,6 +35,14 @@ app.get('/blog/record', blog_controller.blog_record);
 app.get('/blog-list-add', blog_controller.blog_insert);
 app.post('/blog-list-post', urlencodedParser, blog_controller.blog_create);
 
+//Роут: Контакты
+app.get('/contacts', (req, res) => {
+    res.render('contacts', {
+        title: 'Контакты',
+        titleId: 'contacts'
+    });
+});
+
 //Настраиваем слушатель
 app.listen(port, () => {
     console.log(`Express running on port ${port}`);

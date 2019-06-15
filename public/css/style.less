@@ -170,6 +170,9 @@ body {
       }
     }
   }
+  .contacts-info-data {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 600px) {
@@ -247,6 +250,10 @@ body {
         flex-direction: column;
       }
     }
+
+    .contacts-info-data {
+      flex-direction: column;
+    }
 }
 
 @media (min-width: 900px) {
@@ -318,6 +325,10 @@ body {
     .blog-list-content {
       grid-template-columns: 4fr 1fr;
       grid-column-gap: 40px;
+    }
+
+    .contacts-info-data {
+      flex-direction: row;
     }
 }
 
@@ -1860,10 +1871,10 @@ footer {
   display: flex;
 }
 
-.search-input {
+.input-all {
   flex-grow: 2;
   min-width: 150px;
-  width: 100%;
+  width: auto;
   border: 1px solid @c-line;
   border-right: none;
   padding: 15px;
@@ -1889,7 +1900,7 @@ footer {
   }
 }
 
-.search-sub {
+.btn-all {
   position: relative;
   height: 51px;
   padding: 15px;
@@ -1958,5 +1969,79 @@ footer {
     cursor: default;
     pointer-events: none;
     color: lightgray;
+  }
+}
+
+//Контакты
+.contacts-info-data {
+  display: flex;
+  .ci-data-block {
+    display: flex;
+    width: 100%;
+    margin-bottom: 50px;
+    .ci-icon {
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
+      line-height: 80px;
+      background-color: @c-light;
+      text-align: center;
+      border-radius: 50%;
+      margin-right: 15px;
+      i {
+        color: white;
+        font-size: 28px;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: .4;
+        background-color: inherit;
+        border-radius: 50%;
+        -webkit-transition: .3s all ease;
+        -o-transition: .3s all ease;
+        transition: .3s all ease;
+        z-index: -1;
+      }
+      &:hover::after {
+        transform: scale(1.2, 1.2)
+      }
+    }
+    .ci-block-contact {
+      h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: @c-black;
+        margin-top: 18px;
+        margin-bottom: 5px;
+      }
+      a {
+        font-size: 16px;
+        color: @c-black;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      span {
+        font-size: 16px;
+        color: @c-black;
+      }
+    }
+  }
+  .contacts-info-form {
+    .ci-form-row-one {
+      display: flex;
+      flex-direction: row;
+      .ci-form-col-one {
+        display: flex;
+      }
+    }
+    
   }
 }
