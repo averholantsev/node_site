@@ -35,14 +35,53 @@ block content
             h4 E-mail:
             a(href="mailto:atradeperm@yandex.ru") atradeperm@yandex.ru
       .contacts-info-form
-        form(action="")
+        form#comment-form(method="post", action="/contacts-post", encType="multipart/form-data", @submit="checkForm")
+          p(v-if="errors.length")
+            b Пожалуйста исправьте указанные ошибки:
+            ul 
+              li(v-for="error in errors") {{ error }}
           .ci-form-row-one
             .ci-form-col-one
-              input#name.input-all(type="text", name="name")
-              input#email.input-all(type="text", name="email")
-              input#company.input-all(type="text", name="company")
+              input#name.input-all.form-input(type="text", name="name", placeholder="Your Name", required, v-model="name")
+              input#email.input-all.form-input(type="text", name="email", placeholder="Your E-mail", required, v-model="email")
+              input#company.input-all.form-input(type="text", name="company", placeholder="Your Company")
             .ci-form-col-two
-              textarea#comment(name="comment")
+              textarea#comment(name="comment", placeholder="Your Comment", required, v-model="comment")
           .ci-form-row-two
             p We will contact you within one business day.
-            input.btn-all(type="button", value="send message")
+            input.btn-all(type="submit", value="send message")
+        script.
+          const app = new Vue ({
+            el: '#comment-form',
+            data: {
+              errors: [],
+              name: null,
+              email: null,
+              comment: null
+            },
+            methods: {
+              checkForm: (e) => {
+                if (this.name && this.age) {
+                  return true;
+                }
+                
+                this.errors = [];
+                
+                if (!this.name) {
+                  this.errors.push('Требуется указать имя.');
+                }
+                if (!this.email) {
+                  this.errors.push('Требуется указать e-mail.');
+                }
+                if (!this.comment) {
+                  this.errors.push('Требуется ввести комментарий.');
+                }
+
+                if (!this.errors.length) {
+                  return true;
+                }
+
+                e.preventDefault();
+              }
+            }
+          })

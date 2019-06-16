@@ -170,8 +170,18 @@ body {
       }
     }
   }
+
   .contacts-info-data {
     flex-direction: column;
+  }
+
+  .contacts-info-form > form {
+    .ci-form-row-one {
+      flex-direction: column;
+      .ci-form-col-one {
+        margin-right: 0;
+      }
+    }
   }
 }
 
@@ -253,6 +263,15 @@ body {
 
     .contacts-info-data {
       flex-direction: column;
+    }
+
+    .contacts-info-form > form {
+      .ci-form-row-one {
+        flex-direction: row;
+        .ci-form-col-one {
+          margin-right: 50px;
+        }
+      }
     }
 }
 
@@ -1869,19 +1888,22 @@ footer {
 
 .search-block {
   display: flex;
+
+  input[class="input-all"] {
+    border-right: none;
+    flex-grow: 2;
+    min-width: 150px;
+    width: auto;
+  }
 }
 
 .input-all {
-  flex-grow: 2;
-  min-width: 150px;
-  width: auto;
   border: 1px solid @c-line;
-  border-right: none;
   padding: 15px;
   background-color: #F6F6F6;
   color: @c-light;
   font-size: 16px;
-  outline:none;
+  outline: none;
 
   &::placeholder {
     color: @c-light;
@@ -2034,14 +2056,48 @@ footer {
       }
     }
   }
-  .contacts-info-form {
+}
+
+.contacts-info-form {
+  form {
     .ci-form-row-one {
       display: flex;
-      flex-direction: row;
       .ci-form-col-one {
-        display: flex;
+        flex-grow: 1;
+        .form-input {
+          display: block;
+          width: 100%;
+          margin-bottom: 10px;
+          border-radius: 5px;
+        }
+      }
+      .ci-form-col-two {
+        flex-grow: 1;
+        textarea {
+          display: block;
+          margin-bottom: 10px;
+          border-radius: 5px;
+          width: 100%;
+          border: 1px solid @c-line;
+          padding: 15px;
+          background-color: #F6F6F6;
+          color: @c-light;
+          font-size: 16px;
+          font-family: @font-family;
+          outline: none;
+          &::placeholder {
+            color: @c-light;
+          }
+        }
       }
     }
-    
+    .ci-form-row-two {
+      display: flex;
+      justify-content: space-between;
+    }
   }
+}
+
+.form-input-invalid {
+  border: 1px solid #E44848;
 }

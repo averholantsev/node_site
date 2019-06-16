@@ -42,6 +42,9 @@ app.get('/contacts', (req, res) => {
         titleId: 'contacts'
     });
 });
+app.post('/contacts-post', urlencodedParser, (req, res, next) => {
+    res.send(req.body);
+});
 
 //Настраиваем слушатель
 app.listen(port, () => {
