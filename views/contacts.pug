@@ -35,7 +35,7 @@ block content
             h4 E-mail:
             a(href="mailto:atradeperm@yandex.ru") atradeperm@yandex.ru
       .contacts-info-form
-        form#comment-form(method="post", action="/contacts-post", encType="multipart/form-data", @submit.prevent="checkForm")
+        form#comment-form(method="post", action="/contacts-post", encType="multipart/form-data", @submit="checkForm")
           p(v-if="errors.length")
             b Пожалуйста исправьте указанные ошибки:
             ul 
@@ -49,7 +49,7 @@ block content
               textarea#comment(name="comment", placeholder="Your Comment", v-model="comment")
           .ci-form-row-two
             p We will contact you within one business day.
-            input.btn-all(type="submit", value="send message", v-on:submit.prevent="checkForm")
+            input.btn-all(type="submit", value="send message")
         script.
           const app = new Vue ({
             el: '#comment-form',
@@ -60,7 +60,7 @@ block content
               comment: ''
             },
             methods: {
-              checkForm: function(e){
+              checkForm: function (e) {
                 if (this.name && this.email && this.comment) {
                   return true;
                 }
