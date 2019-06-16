@@ -42,11 +42,11 @@ block content
               li(v-for="error in errors") {{ error }}
           .ci-form-row-one
             .ci-form-col-one
-              input#name.input-all.form-input(type="text", name="name", placeholder="Your Name", v-model="name")
-              input#email.input-all.form-input(type="text", name="email", placeholder="Your E-mail", v-model="email")
+              input#name.input-all.form-input(type="text", name="name", placeholder="Your Name", v-model="name", v-bind:class="{'form-input-invalid': nameIsNotFilled}")
+              input#email.input-all.form-input(type="text", name="email", placeholder="Your E-mail", v-model="email", v-bind:class="{'form-input-invalid': emailIsNotFilled}")
               input#company.input-all.form-input(type="text", name="company", placeholder="Your Company")
             .ci-form-col-two
-              textarea#comment(name="comment", placeholder="Your Comment", v-model="comment")
+              textarea#comment(name="comment", placeholder="Your Comment", v-model="comment", v-bind:class="{'form-input-invalid': commentIsNotFilled}")
           .ci-form-row-two
             p We will contact you within one business day.
             input.btn-all(type="submit", value="send message")
@@ -56,8 +56,11 @@ block content
             data: {
               errors: [],
               name: '',
+              nameIsNotFilled: false,
               email: '',
-              comment: ''
+              emailIsNotFilled: false,
+              comment: '',
+              commentIsNotFilled: false
             },
             methods: {
               checkForm: function (e) {
@@ -69,12 +72,24 @@ block content
                 
                 if (!this.name || this.name == "") {
                   this.errors.push('Требуется указать имя.');
+                  this.nameIsNotFilled = true;
+                } 
+                else if (this.name != "") {
+                  this.nameIsNotFilled = false
                 }
                 if (!this.email || this.email == "") {
                   this.errors.push('Требуется указать e-mail.');
+                  this.emailIsNotFilled = true;
+                }
+                else if (this.email != "") {
+                  this.emailIsNotFilled = false
                 }
                 if (!this.comment || this.comment == "") {
                   this.errors.push('Требуется ввести комментарий.');
+                  this.commentIsNotFilled = true;
+                }
+                else if (this.comment != "") {
+                  this.commentIsNotFilled = false
                 }
 
                 if (!this.errors.length) {
