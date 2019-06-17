@@ -30,13 +30,13 @@ exports.send_comment = (req, res, next) => {
       subject: 'Sending Email using Node.js',
       html: textMessageComment
   };
-  transporter.sendMail(mailOptions, (err, res) => {
+  /* transporter.sendMail(mailOptions, (err, res) => {
       if (err) {
         console.log(err);
       } else {
         console.log(JSON.stringify(res));
       }
-  });
+  }); */
 }
 
 

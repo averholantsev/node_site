@@ -37,9 +37,9 @@ block content
       .contacts-info-form
         form#comment-form(method="post", action="/contacts-post", encType="multipart/form-data", @submit="checkForm")
           p(v-if="errors.length")
-            b Пожалуйста исправьте указанные ошибки:
+            b(style="color: #1E1D24") Пожалуйста исправьте указанные ошибки:
             ul 
-              li(v-for="error in errors") {{ error }}
+              li(v-for="error in errors", style="color: #E44848") {{ error }}
           .ci-form-row-one
             .ci-form-col-one
               input#name.input-all.form-input(type="text", name="name", placeholder="Your Name", v-model="name", v-bind:class="{'form-input-invalid': nameIsNotFilled}")
@@ -63,27 +63,29 @@ block content
               commentIsNotFilled: false
             },
             methods: {
-              checkForm: function (e) {
-                if (this.name && this.email && this.comment) {
-                  return true;
-                }
-                
+              checkForm: function(e) {            
                 this.errors = [];
                 
                 if (!this.name || this.name == "") {
                   this.errors.push('Требуется указать имя.');
                   this.nameIsNotFilled = true;
-                } 
+                }
                 else if (this.name != "") {
                   this.nameIsNotFilled = false
                 }
+
                 if (!this.email || this.email == "") {
                   this.errors.push('Требуется указать e-mail.');
                   this.emailIsNotFilled = true;
                 }
-                else if (this.email != "") {
+                else if (this.email != "" && !this.checkEmail(this.email)) {
+                  this.errors.push('E-mail: ' + this.email + ' не прошел проверку на формат. Проверьте корректность введенных данных.');
+                  this.emailIsNotFilled = true;
+                }
+                else if (this.email != "" && this.checkEmail(this.email)) {
                   this.emailIsNotFilled = false
                 }
+                
                 if (!this.comment || this.comment == "") {
                   this.errors.push('Требуется ввести комментарий.');
                   this.commentIsNotFilled = true;
@@ -97,6 +99,10 @@ block content
                 }
 
                 e.preventDefault();
+              },
+              checkEmail: function(email) {
+                var reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return reEmail.test(email);
               }
             }
           })
