@@ -35,7 +35,7 @@ block content
             h4 E-mail:
             a(href="mailto:atradeperm@yandex.ru") atradeperm@yandex.ru
       .contacts-info-form
-        form#comment-form(@submit.prevent="checkForm")
+        form#comment-form(method="post", action="/contacts-post", encType="multipart/form-data", @submit="checkForm")
           p(v-if="errors.length")
             b(style="color: #1E1D24") Пожалуйста исправьте указанные ошибки:
             ul 
@@ -44,11 +44,9 @@ block content
             .ci-form-col-one
               input#name.input-all.form-input(type="text", name="name", placeholder="Your Name", v-model="name", v-bind:class="{'form-input-invalid': nameIsNotFilled}")
               input#email.input-all.form-input(type="text", name="email", placeholder="Your E-mail", v-model="email", v-bind:class="{'form-input-invalid': emailIsNotFilled}")
-              input#company.input-all.form-input(type="text", name="company", placeholder="Your Company", v-model="company")
+              input#company.input-all.form-input(type="text", name="company", placeholder="Your Company")
             .ci-form-col-two
               textarea#comment(name="comment", placeholder="Your Comment", v-model="comment", v-bind:class="{'form-input-invalid': commentIsNotFilled}")
-          h3 Response from server:
-          pre {{ response }}
           .ci-form-row-two
             p We will contact you within one business day.
             input.btn-all(type="submit", value="send message")
@@ -61,10 +59,8 @@ block content
               nameIsNotFilled: false,
               email: '',
               emailIsNotFilled: false,
-              company: '',
               comment: '',
-              commentIsNotFilled: false,
-              response: ''
+              commentIsNotFilled: false
             },
             methods: {
               checkForm: function(e) {            
@@ -99,7 +95,7 @@ block content
                 }
 
                 if (!this.errors.length) {
-                  return this.submitForm();
+                  return true;
                 }
 
                 e.preventDefault();
@@ -107,16 +103,6 @@ block content
               checkEmail: function(email) {
                 var reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return reEmail.test(email);
-              },
-              submitForm() {
-                axios.post('/contacts-post', {
-                  name: this.name,
-                  email: this.email,
-                  company: this.company,
-                  comment: this.comment
-                }).then(response => {
-                  this.response = JSON.stringify(response, null, 2)
-                })
               }
             }
           })
