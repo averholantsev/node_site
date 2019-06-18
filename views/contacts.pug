@@ -36,6 +36,13 @@ block content
             a(href="mailto:atradeperm@yandex.ru") atradeperm@yandex.ru
       .contacts-info-form
         form#comment-form(@submit.prevent="checkForm")
+          .c-popup(v-if="popUpVisible")
+            .c-popup-content 
+              h3 {{ headerResponse }}
+              pre {{ response }}
+              button.c-popup-button(type="button", v-on:click="popUpVisible = !popUpVisible")
+                i.fas.fa-slash
+                i.fas.fa-slash
           p(v-if="errors.length")
             b(style="color: #1E1D24") Пожалуйста исправьте указанные ошибки:
             ul 
@@ -47,8 +54,6 @@ block content
               input#company.input-all.form-input(type="text", name="company", placeholder="Your Company", v-model="company")
             .ci-form-col-two
               textarea#comment(name="comment", placeholder="Your Comment", v-model="comment", v-bind:class="{'form-input-invalid': commentIsNotFilled}")
-          h3 Response from server:
-          pre {{ response }}
           .ci-form-row-two
             p We will contact you within one business day.
             input.btn-all(type="submit", value="send message")
@@ -64,10 +69,12 @@ block content
               company: '',
               comment: '',
               commentIsNotFilled: false,
-              response: ''
+              headerResponse: '',
+              response: '',
+              popUpVisible: false
             },
             methods: {
-              checkForm: function(e) {            
+              checkForm: function(e) {
                 this.errors = [];
                 
                 if (!this.name || this.name == "") {
@@ -115,7 +122,16 @@ block content
                   company: this.company,
                   comment: this.comment
                 }).then(response => {
-                  this.response = JSON.stringify(response, null, 2)
+                  if (response.status == 200) {
+                    this.popUpVisible = true;
+                    this.headerResponse = 'Уведомление';
+                    this.response = 'Ваш запрос успешно отправлен';
+                  }
+                  else {
+                    this.popUpVisible = true;
+                    this.headerResponse = 'Что то пошло не так...';
+                    this.response = response.statusText;
+                  }
                 })
               }
             }
