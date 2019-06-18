@@ -21,6 +21,7 @@ exports.contacts = (req, res) => {
 
 exports.send_comment = (req, res, next) => {
   res.send(req.body);
+  
   var textMessageComment = '';
   if (!req.body.company) textMessageComment = 'Входящее сообщение с формы комментариев: ' + '<br> Имя: ' + req.body.name + '<br> E-mail: ' + req.body.email + '<br> Комментарий: ' + req.body.comment;
   else textMessageComment = 'Входящее сообщение с формы комментариев: ' + '<br> Имя: ' + req.body.name + '<br> E-mail: ' + req.body.email + '<br> Юридическое лицо: ' + req.body.company + '<br> Комментарий: ' + req.body.comment;
@@ -30,7 +31,7 @@ exports.send_comment = (req, res, next) => {
       subject: 'Sending Email using Node.js',
       html: textMessageComment
   };
-  /* transporter.sendMail(mailOptions, (err, res) => {
+ /*  transporter.sendMail(mailOptions, (err, res) => {
       if (err) {
         console.log(err);
       } else {

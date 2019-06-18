@@ -39,7 +39,7 @@ block content
           .c-popup(v-if="popUpVisible")
             .c-popup-content 
               h3 {{ headerResponse }}
-              pre {{ response }}
+              p {{ response }}
               button.c-popup-button(type="button", v-on:click="popUpVisible = !popUpVisible")
                 i.fas.fa-slash
                 i.fas.fa-slash
@@ -126,6 +126,10 @@ block content
                     this.popUpVisible = true;
                     this.headerResponse = 'Уведомление';
                     this.response = 'Ваш запрос успешно отправлен';
+                    this.name = '';
+                    this.email = '';
+                    this.company = '';
+                    this.comment = '';
                   }
                   else {
                     this.popUpVisible = true;
