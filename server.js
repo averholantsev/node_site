@@ -43,6 +43,7 @@ app.get('/blog', blog_controller.blog_list);
 app.get('/blog/record', blog_controller.blog_record);
 app.get('/blog-list-add', blog_controller.blog_insert);
 app.post('/blog-list-post', urlencodedParser, blog_controller.blog_create);
+app.get('/blog/search', blog_controller.blog_search);
 
 //Роут: Контакты
 app.get('/contacts', contacts_controller.contacts);

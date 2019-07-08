@@ -34,6 +34,15 @@ exports.blog_list = (req, res) => {
     });
 };
 
+exports.blog_search = (req, res) => {
+    Blog.find(req.query).exec((err, blogs) => {
+        if (err) {
+            return next(err);
+        }
+        res.send(blogs);
+    });
+};
+
 exports.blog_record = (req, res) => {
     var id = req.query.id;
     Blog.findById(id).exec((err, record) => {

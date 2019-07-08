@@ -139,5 +139,19 @@ block content
                 .sidebar-container
                     h3 SEARCH
                     .search-block
-                        input.input-all(type="search", name="search", id="search", placeholder="Enter keyword...", autocomplete="off")
+                        input.input-all(v-model="query", type="search", name="search", id="search", placeholder="Enter keyword...", autocomplete="off")
                         button.btn-all(type="submit") search
+            script.
+                const search_app = new Vue ({
+                    el: '#search',
+                    data: {
+                        query: ''
+                    }
+                    methods: {
+                        submitForm() {
+                            axios.post('/contacts-post', {
+                            
+                            }).then(response)
+                        }
+                    }
+                }
