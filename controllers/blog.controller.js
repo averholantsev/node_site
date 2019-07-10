@@ -35,7 +35,8 @@ exports.blog_list = (req, res) => {
 };
 
 exports.blog_search = (req, res) => {
-    Blog.find(req.query).exec((err, blogs) => {
+    var query_for_search = req.query.query_req;
+    Blog.find(query_for_search).exec((err, blogs) => {
         if (err) {
             return next(err);
         }
