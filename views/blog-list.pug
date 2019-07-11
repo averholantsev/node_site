@@ -138,18 +138,31 @@ block content
             .blog-sidebar
                 .sidebar-container#search
                     h3 SEARCH
+                    p {{ query }}
                     .search-block
-                        input.input-all(v-model="query", v-on:change="submitSearch", type="search", name="search", placeholder="Enter keyword...", autocomplete="off")
+                        //- , v-on:change="submitSearch"
+                        input.input-all(v-model="query", type="text", name="search", placeholder="Enter keyword...")
                         ul(v-if="info != ''")
                             li(v-for="item in info") 
-                                a(href='#') {{ item.title }}
+                                a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
             script.
                 const search_app = new Vue ({
                     el: '#search',
                     data: {
                         query: '',
                         info: ''
-                    },
+                    }, 
+                    computed : {
+                        submitSearch: function () {
+                            if (this.query != '') {
+                                axios.get('/blog/search', {query_req: this.query}).then(response => (this.info = response.data))
+                            }
+                            else {
+                                console.log('Что то пошло не так...')
+                            }
+                        }
+                    }
+                    /*,
                     methods: {
                         submitSearch() {
                             if (this.query != '') {
@@ -160,4 +173,5 @@ block content
                             }
                         }
                     }
+                    */
                 })
