@@ -141,7 +141,7 @@ block content
                     .search-block
                         //- , v-on:change="submitSearch"
                         input.input-all(v-model="query", v-on:input="debounceSave", type="text", name="search", placeholder="Enter keyword...")
-                        ul(v-if="info != ''")
+                        ul(v-if="query != ''")
                             li(v-for="item in info") 
                                 a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
             script.
