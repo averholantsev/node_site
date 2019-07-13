@@ -139,8 +139,8 @@ block content
                 .sidebar-container#search
                     h3 SEARCH
                     .search-block
-                        //- , v-on:change="submitSearch"
                         input.input-all(v-model="query", v-on:input="debounceSave", type="text", name="search", placeholder="Enter keyword...")
+                        //Подумать как прятать блок и чистить info
                         ul(v-if="query != ''")
                             li(v-for="item in info") 
                                 a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
