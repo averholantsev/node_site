@@ -1898,11 +1898,33 @@ footer {
 
 .search-block {
   display: flex;
+  flex-wrap: wrap;
 
   input[class="input-all"] {
-    flex-grow: 2;
+    flex-grow: 1;
     min-width: 150px;
-    width: auto;
+    width: 100%;
+  }
+
+  input[class="input-all"]:focus {
+    border-color: @c-light;
+  }
+
+  ul {
+    display: block;
+    width: 100%;
+    border: 1px solid @c-line;
+    padding: 15px;
+    margin: 15px 0;
+
+    li {
+      list-style: none;
+      border-bottom: 1px solid @c-line;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
   }
 }
 
