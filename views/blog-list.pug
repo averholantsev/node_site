@@ -1,169 +1,125 @@
-extends default
+extends blog-all
 
-block content
-    article.breadcrumbs
-        .breadcrumbs-container.container
-            .b-left-block
-                span.b-black BLOG
-            .b-right-block
-                span You Are Here:
-                span 
-                    a.b-link(href="/") HOME
-                span  / 
-                span.b-line BLOG
-    article.blog-list  
-        .blog-list-content.container
-            .blog-note-container
-                each blog in blogs
-                    - var hashtags = function(arraylist) {
-                    -   var hashtags_list = "&hashtags=";
-                    -   for (var j=0; j<arraylist.length; j++) {
-                    -       if (typeof arraylist[j].tag_name != "undefined") hashtags_list += arraylist[j].tag_name;
-                    -       if (j < arraylist.length-1) hashtags_list += ",";
-                    -   }
-                    -   if (hashtags_list != "&hashtags=") return hashtags_list;
-                    -   else return ""
-                    - }
-                    .blog-note
-                        .note-share
-                            a.share-date(href="#")
-                                span.share-day #{blog.date.getDate()}
-                                span#share-month-id.share-month #{monthsList[blog.date.getMonth()]}
-                            .share-smm-block
-                                a.share-smm(href=`https://vk.com/share.php?url=localhost:3000/blog/record?id=${blog._id}`, target="_blank")
-                                    i.fab.fa-vk
-                                a.share-smm(href=`https://www.facebook.com/sharer/sharer.php?u=localhost:3000/blog/record?id=${blog._id}`, target="_blank")
-                                    i.fab.fa-facebook-f
-                                a.share-smm(href=`http://twitter.com/share?text=${blog.title}&url=localhost:3000/blog/record?id=${blog._id}${hashtags(blog.tag_array)}`, target="_blank")
-                                    i.fab.fa-twitter
-                        .note-info
-                            a.note-image(href=`/blog/record?id=${blog._id}`)
-                                img(src=`${blog.main_img_path}`)
-                            h4
-                                |By 
-                                a(href="#") #{blog.autor} 
-                                |in 
-                                - var j = 0;
-                                each tag in blog.tag_array
-                                    a.note-category(href="#") #{tag.tag_name}
-                                    if j < blog.tag_array.length-1
-                                        |, 
-                                    else
-                                        |
-                                    - j++ 
-                            a.note-h(href=`/blog/record?id=${blog._id}`) #{blog.title}
-                            if (blog.description.length > 200)
-                                p #{blog.description.substr(0,200)+'...'}
+block blog
+    .blog-note-container
+        each blog in blogs
+            - var hashtags = function(arraylist) {
+            -   var hashtags_list = "&hashtags=";
+            -   for (var j=0; j<arraylist.length; j++) {
+            -       if (typeof arraylist[j].tag_name != "undefined") hashtags_list += arraylist[j].tag_name;
+            -       if (j < arraylist.length-1) hashtags_list += ",";
+            -   }
+            -   if (hashtags_list != "&hashtags=") return hashtags_list;
+            -   else return ""
+            - }
+            .blog-note
+                .note-share
+                    a.share-date(href="#")
+                        span.share-day #{blog.date.getDate()}
+                        span#share-month-id.share-month #{monthsList[blog.date.getMonth()]}
+                    .share-smm-block
+                        a.share-smm(href=`https://vk.com/share.php?url=localhost:3000/blog/record?id=${blog._id}`, target="_blank")
+                            i.fab.fa-vk
+                        a.share-smm(href=`https://www.facebook.com/sharer/sharer.php?u=localhost:3000/blog/record?id=${blog._id}`, target="_blank")
+                            i.fab.fa-facebook-f
+                        a.share-smm(href=`http://twitter.com/share?text=${blog.title}&url=localhost:3000/blog/record?id=${blog._id}${hashtags(blog.tag_array)}`, target="_blank")
+                            i.fab.fa-twitter
+                .note-info
+                    a.note-image(href=`/blog/record?id=${blog._id}`)
+                        img(src=`${blog.main_img_path}`)
+                    h4
+                        |By 
+                        a(href="#") #{blog.autor} 
+                        |in 
+                        - var j = 0;
+                        each tag in blog.tag_array
+                            a.note-category(href="#") #{tag.tag_name}
+                            if j < blog.tag_array.length-1
+                                |, 
                             else
-                                p #{blog.description}
-                .blog-pagination
-                    if (totalPages >= 1 && totalPages <= 3)
-                        if (pageNo != 1)
-                                a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
-                                    i.fas.fa-chevron-left
-                                    |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
-                        if (totalPages != 1)
-                            - for (var i=2; i<=totalPages; i++) {
-                                a.nav(class=(pageNo === i ? "nav-active" : ""), href=`/blog?page=${i}&size=${size}`) #{i}
-                            - }
-                            if (pageNo != totalPages)
-                                a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
-                                    |next
-                                    i.fas.fa-chevron-right
-                    else if (totalPages >= 1 && totalPages <= 5)
-                        //Логика для первых двух страниц
-                        if (pageNo != 1)
-                                a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
-                                    i.fas.fa-chevron-left
-                                    |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
-                        if (pageNo >=1 && pageNo <= 2)
-                            a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
-                            a.nav.nav-disabled ...
-                        
-                        //Логика для 3 страницы
-                        if (pageNo === 3)
-                            a.nav(href=`/blog?page=2&size=${size}`) 2
-                            a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
-                            a.nav(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                                |
+                            - j++ 
+                    a.note-h(href=`/blog/record?id=${blog._id}`) #{blog.title}
+                    if (blog.description.length > 200)
+                        p #{blog.description.substr(0,200)+'...'}
+                    else
+                        p #{blog.description}
+        .blog-pagination
+            if (totalPages >= 1 && totalPages <= 3)
+                if (pageNo != 1)
+                        a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
+                            i.fas.fa-chevron-left
+                            |prev
+                a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
+                if (totalPages != 1)
+                    - for (var i=2; i<=totalPages; i++) {
+                        a.nav(class=(pageNo === i ? "nav-active" : ""), href=`/blog?page=${i}&size=${size}`) #{i}
+                    - }
+                    if (pageNo != totalPages)
+                        a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
+                            |next
+                            i.fas.fa-chevron-right
+            else if (totalPages >= 1 && totalPages <= 5)
+                //Логика для первых двух страниц
+                if (pageNo != 1)
+                        a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
+                            i.fas.fa-chevron-left
+                            |prev
+                a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
+                if (pageNo >=1 && pageNo <= 2)
+                    a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
+                    a.nav.nav-disabled ...
+                
+                //Логика для 3 страницы
+                if (pageNo === 3)
+                    a.nav(href=`/blog?page=2&size=${size}`) 2
+                    a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
+                    a.nav(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
 
-                        //Логика для последних двух страниц
-                        if (pageNo >= totalPages-1 && pageNo <= totalPages)
-                            a.nav.nav-disabled ...
-                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
-                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
-                        if (pageNo != totalPages)
-                            a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
-                                |next
-                                i.fas.fa-chevron-right
-                    else if (totalPages > 5)
-                        //Логика для первых двух страниц
-                        if (pageNo != 1)
-                                a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
-                                    i.fas.fa-chevron-left
-                                    |prev
-                        a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
-                        if (pageNo >=1 && pageNo <= 2)
-                            a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
-                            a.nav.nav-disabled ...
-                        
-                        //Логика для 3 страницы
-                        if (pageNo === 3)
-                            a.nav(href=`/blog?page=2&size=${size}`) 2
-                            a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
-                            a.nav.nav-disabled ...
+                //Логика для последних двух страниц
+                if (pageNo >= totalPages-1 && pageNo <= totalPages)
+                    a.nav.nav-disabled ...
+                    a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
+                if (pageNo != totalPages)
+                    a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
+                        |next
+                        i.fas.fa-chevron-right
+            else if (totalPages > 5)
+                //Логика для первых двух страниц
+                if (pageNo != 1)
+                        a.nav-next(href=`/blog?page=${pageNo-1}&size=${size}`) 
+                            i.fas.fa-chevron-left
+                            |prev
+                a.nav(class=(pageNo === 1 ? "nav-active" : ""), href=`/blog?page=1&size=${size}`) 1
+                if (pageNo >=1 && pageNo <= 2)
+                    a.nav(class=(pageNo === 2 ? "nav-active" : ""), href=`/blog?page=2&size=${size}`) 2
+                    a.nav.nav-disabled ...
+                
+                //Логика для 3 страницы
+                if (pageNo === 3)
+                    a.nav(href=`/blog?page=2&size=${size}`) 2
+                    a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
+                    a.nav.nav-disabled ...
 
-                        //Логика для промежуточных пагинаций
-                        if (pageNo > 3 && pageNo < totalPages-2 && totalPages > 5)
-                            a.nav.nav-disabled ...
-                            a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
-                            a.nav.nav-disabled ...
+                //Логика для промежуточных пагинаций
+                if (pageNo > 3 && pageNo < totalPages-2 && totalPages > 5)
+                    a.nav.nav-disabled ...
+                    a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
+                    a.nav.nav-disabled ...
 
-                        //Логика для предпредпоследней страницы
-                        if (pageNo === totalPages-2)
-                            a.nav.nav-disabled ...
-                            a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
-                            a.nav(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                //Логика для предпредпоследней страницы
+                if (pageNo === totalPages-2)
+                    a.nav.nav-disabled ...
+                    a.nav.nav-active(href=`/blog?page=${pageNo}&size=${size}`) #{pageNo}
+                    a.nav(href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
 
-                        //Логика для последних двух страниц
-                        if (pageNo >= totalPages-1 && pageNo <= totalPages)
-                            a.nav.nav-disabled ...
-                            a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
-                        a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
-                        if (pageNo != totalPages)
-                            a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
-                                |next
-                                i.fas.fa-chevron-right
-            .blog-sidebar
-                .sidebar-container#search
-                    h3 SEARCH
-                    .search-block
-                        input.input-all(v-model="query", v-on:input="debounceSave", type="text", name="search", placeholder="Enter keyword...")
-                        //Подумать как прятать блок и чистить info
-                        ul(v-if="query != ''")
-                            li(v-for="item in info") 
-                                a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
-            script.
-                const search_app = new Vue ({
-                    el: '#search',
-                    data: {
-                        query: '',
-                        info: ''
-                    }, 
-                    computed : {
-                        debounceSave: function() {
-                            return _.debounce(this.submitSearch, 1000);
-                        }
-                    },
-                    methods: {
-                        submitSearch() {
-                            if (this.query != '') {
-                                axios.get('/blog/search', {query_req: this.query}).then(response => (this.info = response.data))
-                            }
-                            else {
-                                console.log('Что то пошло не так...')
-                            }
-                        }
-                    }
-                })
+                //Логика для последних двух страниц
+                if (pageNo >= totalPages-1 && pageNo <= totalPages)
+                    a.nav.nav-disabled ...
+                    a.nav(class=(pageNo === totalPages-1 ? "nav-active" : ""), href=`/blog?page=${totalPages-1}&size=${size}`) #{totalPages-1}
+                a.nav(class=(pageNo === totalPages ? "nav-active" : ""), href=`/blog?page=${totalPages}&size=${size}`) #{totalPages}
+                if (pageNo != totalPages)
+                    a.nav-next(href=`/blog?page=${pageNo+1}&size=${size}`) 
+                        |next
+                        i.fas.fa-chevron-right

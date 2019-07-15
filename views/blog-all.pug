@@ -1,0 +1,51 @@
+extends default
+
+block content
+    block breadcrumbs
+        article.breadcrumbs
+            .breadcrumbs-container.container
+                .b-left-block
+                    span.b-black BLOG
+                .b-right-block
+                    span You Are Here:
+                    span 
+                        a.b-link(href="/") HOME
+                    span  / 
+                    span.b-line BLOG
+
+    .blog-content.container
+        block blog
+
+        block sidebar
+            .blog-sidebar
+                .sidebar-container#search
+                    h3 SEARCH
+                    .search-block
+                        input.input-all(v-model="query", v-on:input="debounceSave", type="text", name="search", placeholder="Enter keyword...")
+                        //Подумать как прятать блок и чистить info
+                        ul(v-if="query != ''")
+                            li(v-for="item in info") 
+                                a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
+                script.
+                    const search_app = new Vue ({
+                        el: '#search',
+                        data: {
+                            query: '',
+                            info: ''
+                        }, 
+                        computed : {
+                            debounceSave: function() {
+                                return _.debounce(this.submitSearch, 1000);
+                            }
+                        },
+                        methods: {
+                            submitSearch() {
+                                if (this.query != '') {
+                                    axios.get('/blog/search', {query_req: this.query}).then(response => (this.info = response.data))
+                                }
+                                else {
+                                    console.log('Что то пошло не так...')
+                                }
+                            }
+                        }
+                    })
