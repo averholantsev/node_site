@@ -34,9 +34,8 @@ exports.blog_list = (req, res) => {
     });
 };
 
-exports.blog_search = (req, res) => {
-    var query_for_search = req.query.query_req;
-    Blog.find(query_for_search).exec((err, blogs) => {
+exports.blog_search = (req, res, next) => {
+    Blog.find({title: { '$regex' : req.query.query_req, '$options' : 'i' } }).exec((err, blogs) => {
         if (err) {
             return next(err);
         }
