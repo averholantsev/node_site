@@ -26,8 +26,8 @@ block content
                     h3 SEARCH
                     .search-block
                         input.input-all(v-model="query", v-on:input="debounceSave", type="text", name="search", placeholder="Enter keyword...")
-                        //Подумать как прятать блок и чистить info
                         ul(v-if="query != ''")
+                            h4 Результаты поиска:
                             li(v-for="item in info") 
                                 a(v-bind:href="'/blog/record?id=' + item._id") {{ item.title }}
                 script.
